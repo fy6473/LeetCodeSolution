@@ -39,7 +39,7 @@ public:
         // return finalsum;
 
 
-        // better solution :-using kadane algo
+        // better solution :-using kadane algo O(n2).
         int n=nums.size();
         int maxi=INT_MIN;
         int sum=0;
@@ -52,5 +52,25 @@ public:
             }
         }
         return maxi;
+
+        // // better solution :-using kadane algo  if by cahnce interveiwer ask can you also return the starting and ending index of subarray then
+        // int n=nums.size();
+        // int maxi=INT_MIN;
+        // int sum=0;
+        // int startingindex=-1;
+        // int endingindex=-1;
+        // for(int i=0;i<n;i++){
+        //    if(sum==0){
+        //     int start=i; 
+        //    }
+        //     sum=sum+nums[i];
+        //     maxi=max(sum,maxi);
+        // startingindex=start,endindindex=i;
+        //     if(sum<0){
+        //         sum=0;
+        //         continue;
+        //     }
+        // }
+        // return maxi;
     }
 };
