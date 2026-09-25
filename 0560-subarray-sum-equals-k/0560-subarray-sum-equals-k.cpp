@@ -1,23 +1,34 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        int n=nums.size();
-        unordered_map<int,int> mpp;
-                //    /  \
-                // prefixsum,frequency
+        // brute force soln:-
+        // int n=nums.size();
+        // int cnt=0;
+        // for(int i =0;i<n;i++){
+        //     for(int j=i;j<n;j++){
+        //         int sum =0;
+        //         for(int k=i;k<=j;k++){
+        //             sum=sum+nums[k];
+        //         }
+        //         if(sum==k){
+        //                 cnt++;
+        //             }
+        //     }
+        // }
+        // return cnt;
 
-         //intially sum 0 and frquency of 0 is 1.
-        mpp[0]=1; 
-        int count=0;
-        int sum=0;
+        // better soln;
+        int n=nums.size();
+        int cnt=0;
         for(int i=0;i<n;i++){
-            sum=sum+nums[i];
-            int rem=sum-k;
-            if(mpp.find(rem)!=mpp.end()){
-                count=count+mpp[rem];
+            int sum=0;
+            for(int j=i;j<n;j++){
+                sum=sum+nums[j];
+               if(sum==k){
+                cnt++;
+                }
             }
-            mpp[sum]++;
         }
-    return count;        
+    return cnt;
     }
 };
