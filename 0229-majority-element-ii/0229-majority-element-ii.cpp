@@ -51,7 +51,6 @@ public:
         if(mpp[nums[i]]==minimum){
             arr.push_back(nums[i]);
         }
-        if(arr.size()==2) break;
        }
        return arr;
 
