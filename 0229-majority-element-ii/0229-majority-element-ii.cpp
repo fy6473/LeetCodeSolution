@@ -56,6 +56,9 @@ public:
 
 
     // optimal soln:-in this algorithm apply see majority-I also.
+//     Algorithm name:
+
+// Boyer–Moore Voting Algorithm — Extended Version
     // t.c.:- O(2n) and space complexity :-O(1).
     int n=nums.size();
     int cnt1=0;
