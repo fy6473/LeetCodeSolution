@@ -39,7 +39,10 @@ public:
         // return arr;
 
 
-        // optimal soln:-
+        // optimal soln:-  time complexity is o(nlogn)+o(N*N)
+     //                                           /       \  
+                                     //  for Sorting   forloop &near about N for while loop
+        // space is 0(No. of triplets).   
         sort(nums.begin(),nums.end());
         vector<vector<int>> arr;
         int n=nums.size();
