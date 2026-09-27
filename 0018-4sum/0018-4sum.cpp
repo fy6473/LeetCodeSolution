@@ -26,24 +26,65 @@ public:
 
 
 //better soln:-t.c. is O(n3*logM) and space is O(n)+O(no.of unique triplets)*2 
-        set<vector<int>> st;
+        // set<vector<int>> st;
+        // int n=nums.size();
+        // for(int i=0;i<n;i++){
+        //     for(int j=i+1;j<n;j++){
+        //     set<long long>hash;
+        //         for(int k=j+1;k<n;k++){
+        //         long long fourth=(nums[i]+nums[j]);
+        //             fourth=(long long)target-(fourth+nums[k]);
+        //             if(hash.find(fourth)!=hash.end()){
+        //                 vector<int> temp={nums[i],nums[j],nums[k],(int)fourth};
+        //                 sort(temp.begin(),temp.end());
+        //                 st.insert(temp);
+        //             }
+        //             hash.insert(nums[k]);
+        //         }
+        //     }
+        // }
+        // vector<vector<int>> arr(st.begin(),st.end());
+        // return arr;
+
+
+        // optimal soln:- t.c. is o(n3) and space is o(no. of quadrants).
         int n=nums.size();
-        for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-            set<long long>hash;
-                for(int k=j+1;k<n;k++){
-                long long fourth=(nums[i]+nums[j]);
-                    fourth=(long long)target-(fourth+nums[k]);
-                    if(hash.find(fourth)!=hash.end()){
-                        vector<int> temp={nums[i],nums[j],nums[k],(int)fourth};
-                        sort(temp.begin(),temp.end());
-                        st.insert(temp);
+        sort(nums.begin(),nums.end());
+       vector<vector<int>> st;
+       for(int i=0;i<n;i++){
+           if(i>0 && nums[i]==nums[i-1]){
+                        continue;
                     }
-                    hash.insert(nums[k]);
+        for(int j=i+1;j<n;j++){
+               if(j>i+1 && nums[j]==nums[j-1]){
+                        continue;
+                    }
+            int k=j+1;
+            int l=n-1;
+            while(k<l){
+                long long sum=(long long)nums[i]+nums[j]+nums[k]+nums[l];
+                if(sum>target){
+                    l--;
                 }
+                else if(sum<target){
+                    k++;
+                }
+                else{
+                    vector<int>temp={nums[i],nums[j],nums[k],nums[l]};
+                    st.push_back(temp);
+                    k++;
+                    l--;
+                    while(k<l && nums[k]==nums[k-1]){
+                        k++;
+                    }
+                    while(l>k && nums[l]==nums[l+1]){
+                        l--;
+                    }
+                }
+
             }
         }
-        vector<vector<int>> arr(st.begin(),st.end());
-        return arr;
+       }
+       return st;
     }
 };
