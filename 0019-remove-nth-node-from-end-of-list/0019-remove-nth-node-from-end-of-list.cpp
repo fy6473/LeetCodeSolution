@@ -11,6 +11,8 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
+// time complexity:- O(n)  && space is O(1).
+
         if(head==NULL || head->next==NULL){
             return NULL;
         }
